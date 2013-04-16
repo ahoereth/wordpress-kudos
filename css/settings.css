@@ -1,0 +1,55 @@
+table.kudos-radios,
+table.kudos-radios tr,
+table.kudos-radios tr td{
+	border-spacing: 0;
+}
+table.kudos-radios tr td{
+	text-align: center;
+}
+table.kudos-radios tr td{
+	border-top: 1px dashed #ccc;
+	border-left: 1px dashed #ccc;
+}
+table.kudos-radios tr td.kudos-default{
+	background-color: #ddd;
+}
+table.kudos-radios tr td.kudos-left{
+	border-left-width: 0;
+}
+table.kudos-radios tr.kudos-top td{
+	border-top-width: 0;
+}
+table.kudos-radios tr td label{
+	float: left;
+}
+table.kudos-radios tr.kudos-top td label{
+	float: none;
+}
+.kudos-disable {
+	position: relative;
+}
+.kudos-disable label{
+	position: absolute;
+	top: -50%;
+	left: -25px;
+
+	-ms-transform:rotate(-45deg);
+	-webkit-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+}
+ul.kudos-functions{
+	margin-top: 0;
+}
+ul.kudos-functions ul{
+	list-style-type: square;
+	margin-left: 2em;
+}
+label.kudos-default {
+	font-size: 12px;
+	font-style: italic;
+	font-family: sans-serif;
+}
+label.kudos-default{
+	font-size: 11px;
+	cursor: default;
+}
