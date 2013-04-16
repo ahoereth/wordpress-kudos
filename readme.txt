@@ -1,4 +1,4 @@
-=== Featured Video Plus ===
+=== Kudos ===
 Contributors: a.hoereth
 Plugin Name: Kudos
 Plugin URI: http://yrnxt.com/category/wordpress/kudos/
@@ -20,12 +20,12 @@ Kudos, as seen on the svbtle.com blogging network, are an unobtrusive and playfu
 way for your readers to show their appreciation. To give kudos for a post the visitor
 simply hovers the Kudo-Button: A small animation starts for as long as the visitor does leave his cursor on the Kudo. When the animation is finished and the Kudo-Button is filled the count goes up by one. By clicking the then filled button the visitor can take his Kudo off the post again.
 
-See the plugin in action on [yrnxt.com](http://yrnxt.com).
+See the plugin in action on [yrnxt.com](http://yrnxt.com/category/wordpress/kudos/).
 
-Dustin Curtis, creator of svbtle.com and inventor of Kudos, describes Kudos like this:
+[Dustin Curtis](http://dcurt.is/codename-svbtle), creator of svbtle.com and inventor of Kudos, describes Kudos like this:
 
 	Each post has one unusual feedback mechanism which has no external repercussions: Kudos.
-	- source: [dcurt.is](http://dcurt.is/codename-svbtle)
+
 
 By default Kudos are displayed in the top right of your post contents. You can
 customize the positioning and texts at `Settings -> Kudos`. More customizations
@@ -56,7 +56,7 @@ into `Settings -> Kudos` for customizations.
 
 == Changelog ==
 
-= 1.0 =
+= 1.0: 2013-04-16 =
 * Release
 
 
