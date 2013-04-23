@@ -37,13 +37,6 @@ table.kudos-radios tr.kudos-top td label{
 	-webkit-transform:rotate(-45deg);
 	transform:rotate(-45deg);
 }
-ul.kudos-functions{
-	margin-top: 0;
-}
-ul.kudos-functions ul{
-	list-style-type: square;
-	margin-left: 2em;
-}
 label.kudos-default {
 	font-size: 12px;
 	font-style: italic;
@@ -52,4 +45,25 @@ label.kudos-default {
 label.kudos-default{
 	font-size: 11px;
 	cursor: default;
+}
+
+ul.kudos-cpde{
+	margin-top: 0;
+}
+ul.kudos-code ul {
+	margin-left: 1em;
+}
+ul.kudos-code li {
+	margin-bottom: 2px;
+}
+
+ul.kudos-code li ul li {
+	list-style-type: none !important;
+	padding: 0;
+}
+
+.kudos-float {
+	float: left;
+	width: 4em;
+	padding: 0 2px;
 }

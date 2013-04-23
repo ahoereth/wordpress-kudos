@@ -27,7 +27,7 @@ License: GPL2
 */
 
 if (!defined('KUDO_VER'))
-	define('KUDO_VER', '1.0');
+	define('KUDO_VER', '1.0.5');
 
 // symlink proof
 $pathinfo = pathinfo(dirname(plugin_basename(__FILE__)));
@@ -54,6 +54,10 @@ if (is_admin()){
 	// init settings
 	include_once( KUDO_DIR . 'php/settings.php' );
 	$kudos_settings = new kudos_settings();
+
+	// init contextual help
+	include_once( KUDO_DIR . 'php/help.php' );
+	$kudos_help = new kudos_help($kudos_settings);
 
 	// init AJAX
 	// This is also used on frontend, but AJAX is always executed through
