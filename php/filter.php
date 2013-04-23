@@ -15,11 +15,10 @@ class kudos_filter {
 				break;
 			default:
 			case 'c':
-				add_filter( 	'the_content', array( &$this, 'content'));
+				add_filter( 	'the_content', 			array( &$this, 'content'));
 				if (isset($options['excerpt']) && $options['excerpt'])
-					add_filter( 'get_the_excerpt', array( &$this, 'excerpt'));
+					add_filter( 'get_the_excerpt', 	array( &$this, 'excerpt'));
 				break;
-
 		}
 	}
 
@@ -34,6 +33,9 @@ class kudos_filter {
 	 * @return string 				 content + Kudos
 	 */
 	public function content($content) {
+		if (is_feed())
+			return $content;
+
 		$post_id = get_the_ID();
 		$options = get_option('kudos');
 

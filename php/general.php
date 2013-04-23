@@ -21,7 +21,9 @@ class kudos {
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'nonce' 	=> wp_create_nonce( 'kudos-nonce' ),
 				'refresh' => isset($options['refresh' ]) ? $options['refresh' ] : 5000,
-				'lifetime'=> isset($options['lifetime']) ? $options['lifetime'] : 1460
+				'lifetime'=> isset($options['lifetime']) ? $options['lifetime'] : 1460,
+				'unkudo'	=> isset($options['unkudo'  ])&&
+									 is_bool($options['unkudo'  ]) ? $options['unkudo'] 	: true
 			) );
 
 		}
@@ -34,6 +36,9 @@ class kudos {
 	 * @return [type]          [description]
 	 */
 	public function shortcode( $atts, $content = null ) {
+		if (is_feed())
+			return '';
+
    extract( shortcode_atts( array(
    		'class' 	=> 'kudo-c_tr',
    		'style' 	=> null,
