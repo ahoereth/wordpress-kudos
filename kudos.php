@@ -1,11 +1,11 @@
 <?php
 /**
 Plugin Name: Kudos
-Plugin URI: https://github.com/ahoereth/kudos
+Plugin URI: http://yrnxt.com/wordpress/kudos
 Description: Svbtle.com style kudos for your blog.
 Author: Alexander Höreth
-Version: 1.0
-Author URI: http://ahoereth.yrnxt.com
+Version: 1.1
+Author URI: http://yrnxt.com
 License: GPL2
 
     Copyright 2009-2013  Alexander Höreth (email: a.hoereth@gmail.com)
@@ -27,7 +27,7 @@ License: GPL2
 */
 
 if (!defined('KUDO_VER'))
-	define('KUDO_VER', '1.0.5');
+	define('KUDO_VER', '1.1');
 
 // symlink proof
 $pathinfo = pathinfo(dirname(plugin_basename(__FILE__)));
@@ -41,9 +41,6 @@ if (!defined('KUDO_URL'))
 // include functions which are intended to be used by developers and therefore
 // are not wrapped in their own class
 include_once( KUDO_DIR . 'php/functions.php' );
-
-// init translations, WIP
-//add_action( 'plugins_loaded', array( &$kudos, 'language' ) );
 
 // only on backend / administration interface
 if (is_admin()){

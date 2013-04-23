@@ -25,6 +25,9 @@ function kudos_upgrade() {
 				$options['text' 	 ] 		= 'Kudos';
 				$options['hover' 	 ] 		= "Don't//move!";
 
+			case '1':
+				$options['unkudo'  ]	 	= true;
+
 			// *************************************************************
 			// required on every upgrade
 			$options['version'] = KUDO_VER;

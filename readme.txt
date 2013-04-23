@@ -1,7 +1,7 @@
 === Kudos ===
 Contributors: a.hoereth
 Plugin Name: Kudos
-Plugin URI: http://yrnxt.com/category/wordpress/kudos/
+Plugin URI: http://yrnxt.com/wordpress/kudos/
 Tags: svbtle, svbtle.com, kudos, ajax, like, vote, star, favorite, plus
 Author: Alexander Höreth
 Author URI: http://yrnxt.com/
@@ -10,7 +10,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.1
 Tested up to: 3.6
-Stable tag: 1.0
+Stable tag: 1.1
 
 Brings Kudos, an unobtrusive alternative to Facebook's like, to your WordPress blog.
 
@@ -40,7 +40,7 @@ Beside the default automatic insertion into your posts you can make use of the P
 	kudos_count( $post_id, $text, $hover )
 	get_kudos_count( $post_id )
 
-For more information on those take a look into the settings.
+For more information on those take a look at the contextual help on your Settings -> Kudos screen.
 
 This plugin makes use of [Masukomi's Kudos](https://github.com/masukomi/kudos) implementation.
 If you like Kudos and the overall look of Svbtle take a look at [wp-svbtle](https://github.com/gravityonmars/wp-svbtle).
@@ -55,6 +55,12 @@ By default the Kudos are displayed in the top left of your content. Take a look
 into `Settings -> Kudos` for customizations.
 
 == Changelog ==
+
+= 1.1: 2013-04-23 =
+* Added option to disable unkudo'ing
+* Added contextual help
+* Added settings action link
+* Removed kudos from feeds
 
 = 1.0: 2013-04-16 =
 * Release

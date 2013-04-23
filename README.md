@@ -36,6 +36,12 @@ If you like Kudos and the overall look of Svbtle take a look at [wp-svbtle](http
 
 ## Changelog ##
 
+### 1.1: 2013-04-23 ###
+* Added option to disable unkudo'ing
+* Added contextual help
+* Added settings action link
+* Removed kudos from feeds
+
 ### 1.0: 2013-04-16 ###
 * Release
 
