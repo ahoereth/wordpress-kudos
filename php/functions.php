@@ -93,7 +93,10 @@ function get_kudos( $post_id = null, $attr ){
 	$tmplt.= '<div class="kudo-opening"><div class="kudo-circle">&nbsp;</div></div>'."\n\t\t";
 	$tmplt.= '</a>'."\n\t\t";
 
-	if (!isset($counter) || !is_bool($counter)){
+	if (isset($counter) && !is_bool($counter))
+		$counter = ($counter === 'true');
+
+	if (!isset($counter) || !is_bool($counter) ){
 		$counter = isset($options['counter']) ? $options['counter'] : true;
 	}
 
