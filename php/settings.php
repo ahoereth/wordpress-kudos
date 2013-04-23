@@ -11,6 +11,21 @@ class kudos_settings {
 	public function __construct() {
 		add_action( 'admin_menu', 				array( &$this, 'menu' ) );
 		add_action( 'admin_init', 				array( &$this, 'register' ) );
+		add_filter('plugin_action_links', array( &$this, 'action_link' ), 10, 2);
+	}
+
+	/**
+	 * Adds a settings link to the plugin info
+	 *
+	 * @since 1.1
+	 */
+	function action_link($links, $file) {
+		if ($file == KUDO_NAME . '/' . KUDO_NAME . '.php') {
+			$settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=kudos">Settings</a>';
+			array_unshift($links, $settings_link);
+		}
+
+		return $links;
 	}
 
 	/**
@@ -65,6 +80,7 @@ class kudos_settings {
 	<div class="wrap">
 	    <?php screen_icon(); ?>
 	    <h2>Kudos Settings</h2>
+	    <p><?php _e('On this page you can specify settings for the Kudos plugin. Take a look into the contextual help (button on the top right of this screen) for information on PHP-functions and the kudos shortcode.','kudos'); ?></p>
 	    <form method="post" action="options.php">
 
 		<?php
@@ -161,9 +177,10 @@ class kudos_settings {
 	</tr>
 </table>
 <p class="description">
-	<?php printf(__('You can also %sdisable%s the auto integration and make use of the PHP-Functions below.','kudo'),'<label for="kudos-position-off"><u>','</u></label>'); ?><br />
+	<?php printf(__('You can also %sdisable%s the auto integration and make use of the PHP-Functions (see contextual help).','kudo'),'<label for="kudos-position-off"><u>','</u></label>'); ?><br />
 	<?php _e('By default Kudos are displayed in the content\'s top right, but not in the excerpts.','kudos'); ?><br />
-	<?php printf(__('The Title-Options are experimental, because they might result in Kudos being displayed in navigations etc. You can fix this using CSS addressing something like %s, while %s is the css class of your navigation.','kudos'),'<code>.navigation .kudos-box{ display: none; }</code>', '<code>.navigation</code>'); ?>
+	<?php _e('The Title-Options are experimental, because they might result in Kudos being displayed in navigations etc.','kudos'); ?><br />
+	<?php printf(__('You can fix this using CSS addressing something like %s, while %s is the css class of your navigation.','kudos'),'<code>.navigation .kudos-box{ display: none; }</code>', '<code>.navigation</code>'); ?>
 </p>
 
 <?php
