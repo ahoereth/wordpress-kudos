@@ -1,5 +1,6 @@
 <?php
 class kudos_settings {
+	public $hook;
 
 	/**
 	 * Initializes the functions for creating the options page (with menu item and
@@ -19,9 +20,9 @@ class kudos_settings {
 	 * @since 1.0
 	 */
 	public function menu(){
-		$hook = add_options_page( 'Kudos Settings', 'Kudos', 'manage_options', 'kudos', array( &$this, 'page' ) );
+		$this->hook = add_options_page( 'Kudos Settings', 'Kudos', 'manage_options', 'kudos', array( &$this, 'page' ) );
 
-    add_action('admin_print_scripts-'.$hook, array( &$this, 'enqueue' ));
+    add_action('admin_print_scripts-'.$this->hook, array( &$this, 'enqueue' ));
 	}
 
 	/**
@@ -48,9 +49,9 @@ class kudos_settings {
 
 		add_settings_field('kudos-position', 	__('Postion', 									'kudos'), array( &$this, 'position' ), 'kudos', 'kudos-section');
 		add_settings_field('kudos-margins', 	__('Margins', 									'kudos'), array( &$this, 'margins' 	), 'kudos', 'kudos-section');
-		add_settings_field('kudos-php', 			__('PHP-Functions', 						'kudos'), array( &$this, 'php' 			), 'kudos', 'kudos-section');
 		add_settings_field('kudos-refresh', 	__('AJAX Counter Refresh-Rate', 'kudos'), array( &$this, 'refresh' 	), 'kudos', 'kudos-section');
 		add_settings_field('kudos-lifetime', 	__('Cookie Lifetime', 					'kudos'), array( &$this, 'lifetime' ), 'kudos', 'kudos-section');
+		add_settings_field('kudos-unkudo',  	__('Unkudo', 										'kudos'), array( &$this, 'unkudo' 	), 'kudos', 'kudos-section');
 		add_settings_field('kudos-defaults',  __('Defaults', 									'kudos'), array( &$this, 'defaults' ), 'kudos', 'kudos-section');
 	}
 
@@ -229,39 +230,6 @@ class kudos_settings {
 <?php	}
 
 	/**
-	 * Prints information on the available PHP-Functions.
-	 *
-	 * @since 1.0
-	 */
-	public function php(){ ?>
-
-<p><?php printf(__('You can make use of the following functions in your code to
-integrate Kudos into your theme:','kudos')); ?></p>
-<ul class="kudos-functions">
-	<li><code>kudos()</code>&nbsp;-&nbsp;<?php printf(__('Use in %sThe Loop%s; Echos the current post\'s Kudos button with default settings.','kudos'), '<a href="http://codex.wordpress.org/The_Loop" target="_blank">', '</a>'); ?></li>
-	<li><code>get_kudos( $post_id, $attr )</code>&nbsp;-&nbsp;<?php printf(__('Returns the Kudos button. If %s is provided it needs to be an associative array containing any of the following keys:','kudos'),'<code>$attr</code>'); ?>
-		<ul>
-			<li><code>class</code>&nbsp;<?php _e(' additional values for the HTML class attribute.','kudos'); ?></li>
-			<li><code>style</code>&nbsp;<?php _e('Value for the HTML style attribute.','kudos'); ?></li>
-			<li><code>counter</code>&nbsp;<?php _e('Boolean defining if the kudos counter should be printed.','kudos'); ?></li>
-			<li><code>text</code>&nbsp;<?php _e('Text to display below the count number. Pass an empty string to hide.','kudos'); ?></li>
-			<li><code>hover</code>&nbsp;<?php _e('Text to display on mouse hover. Empty string for no changing text.','kudos'); ?></li>
-		</ul>
-	</li>
-	<li><code>kudos_count( $post_id, $text, $hover )</code>&nbsp;-&nbsp;<?php _e('Echos the Kudos-Counter. Use this for live-incrementing.','kudos'); ?></li>
-	<li><code>get_kudos_count( $post_id )</code>&nbsp;-&nbsp;<?php _e('Returns the Kudos-Count as static integer.','kudos'); ?></li>
-	<li><?php printf(__('All parameters are optional. For %s, %s and %s you can set the defaults at the bottom of this page.','kudos'),
-	'<code>$counter</code>','<code>$text</code>',
-	'<code>$hover</code>'); ?></li>
-</ul>
-<p class="description"><strong><?php _e('Note','kudos'); ?>:</strong>&nbsp;
-<?php printf(__('When updating your theme your changes will most likely be overwrite, so consider using a %sChild Theme%s and wrapping the functions in %s conditionals.','kudos'),
-'<a href="http://codex.wordpress.org/Child_Themes" target="_blank">','</a>',
-'<a href="http://codex.wordpress.org/Managing_Plugins#Hiding_Plugins_When_Deactivated" target="_blank">function_exists()</a>'); ?></p>
-
-<?php }
-
-	/**
 	 * Prints the input field and description for setting the counter AJAX refresh
 	 * rate.
 	 *
@@ -292,6 +260,21 @@ integrate Kudos into your theme:','kudos')); ?></p>
 <label class="kudos-default">(<?php _e('default', 'kudos'); ?>: <code>1460</code>)</label>
 <p class="description"><?php printf( __('Cookies are used for saving which kudos have been triggered by the specific visitor. Read more on cookies %shere%s.', 'kudos'), '<a href="http://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">', '</a>'); ?></p>
 <p class="description"><strong><?php _e('Note','kudos'); ?>:</strong>&nbsp;<?php _e('Setting this value to 0 deletes cookies when the user leaves your site. This will result in the visitors being able to kudo posts again when they return to your website, which might spoil the counts.', 'kudos'); ?></p>
+
+<?php }
+
+	/**
+	 * Prints a checkbox to disable unkudo functionality
+	 *
+	 * @since 1.1
+	 */
+	public function unkudo() {
+		$options = get_option('kudos');
+		$unkudo = isset($options['unkudo']) &&
+						 is_bool($options['unkudo']) ? $options['unkudo'] : true; ?>
+
+<input type="checkbox" name="kudos[unkudo]" id="kudos-unkudo" value="true" <?php checked( true, $unkudo, true ); ?>/>
+<p class="description"><?php _e('The original Kudos on svbtle.com do not allow unkudo\'ing. Still, this plugin does. Disable if preferred.','kudos'); ?></p>
 
 <?php }
 
@@ -341,6 +324,8 @@ integrate Kudos into your theme:','kudos')); ?></p>
 			$options['margins'][$i] = is_numeric($input['margins'][$i]) ? $input['margins'][$i] : 0;
 		for ($i = 2; $i < 4; $i++)
 			$options['margins'][$i] = is_numeric($input['margins'][$i]) ? $input['margins'][$i] : 30;
+
+		$options['unkudo']  = isset($input['unkudo'])  ? true : false;
 
 		$options['counter'] = isset($input['counter']) ? true : false;
 		$options['text' ] 	= esc_html__($input['text' ]);

@@ -22,7 +22,12 @@ Kudoable = (function() {
   Kudoable.prototype.bindEvents = function() {
     this.element.children('.kudo-object').mouseenter(this.start);
     this.element.children('.kudo-object').mouseleave(this.end);
-    this.element.children('.kudo-object').click(this.unkudo);
+
+    if (kudosdata.unkudo)
+      this.element.children('.kudo-object').click(this.unkudo);
+    else
+      this.element.children('.kudo-object').css('cursor','default');
+
     jQuery(document).on('touchstart', this.element.children('.kudo-object'), this.start);
     return jQuery(document).on('touchend', this.element.children('.kudo-object'), this.end);
   };
