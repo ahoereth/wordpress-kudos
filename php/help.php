@@ -76,23 +76,28 @@ class kudos_help{
 	 * @since 1.1
 	 */
 	public function tabs() {
-		$screen = get_current_screen();
-		if( ($screen->id != $this->settings->hook) || (get_bloginfo('version') < 3.3) )
+		if (get_bloginfo('version') < 3.3)
 			return;
 
+		$screen = get_current_screen();
+
 		// PHP FUNCTIONS HELP TAB
-		$screen->add_help_tab( array(
-			'id' 			=> 'kudos_functions',
-			'title'   => 'Kudos: '.__('PHP-Functions','kudos'),
-			'content' => $this->functions
-		));
+		if ($screen->id==$this->settings->hook){
+			$screen->add_help_tab( array(
+				'id' 			=> 'kudos_functions',
+				'title'   => 'Kudos: '.__('PHP-Functions','kudos'),
+				'content' => $this->functions
+			));
+		}
 
 		// SHORTCODE HELP TAB
-		$screen->add_help_tab( array(
-			'id' 			=> 'kudos_shortcode',
-			'title'   => 'Kudos: Shortcode',
-			'content' => $this->shortcode
-		));
+		if (($screen->id=='post')||($screen->id==$this->settings->hook)){
+			$screen->add_help_tab( array(
+				'id' 			=> 'kudos_shortcode',
+				'title'   => 'Kudos: Shortcode',
+				'content' => $this->shortcode
+			));
+		}
 	}
 
 	/**
