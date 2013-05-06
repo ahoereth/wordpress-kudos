@@ -85,7 +85,7 @@ class kudos_filter {
 	 * @return string          excerpt + Kudos
 	 */
 	public function excerpt($excerpt){
-		return $this::content($excerpt);
+		return $this->content($excerpt);
 	}
 
 	/**

@@ -194,7 +194,7 @@ jQuery(document).ready(function($){
           //if(!data.success)
           //  $(this).removeClass("kudo-complete").addClass("kudo-animate");
         }, "json"
-      ).fail(function() { alert("failed"); }); // for development
+      );//.fail(function() { alert("failed"); }); // for development
     }
   });
 
@@ -228,7 +228,7 @@ jQuery(document).ready(function($){
           //if(!data.success)
           //  $(this).removeClass("kudo-animate").addClass("kudo-complete");
         }, "json"
-        ).fail(function() { alert("failed here"); });
+        );//.fail(function() { alert("failed here"); });
       }
     }
   });
