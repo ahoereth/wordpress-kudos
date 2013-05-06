@@ -20,20 +20,15 @@ Kudoable = (function() {
   }
 
   Kudoable.prototype.bindEvents = function() {
-    this.element.children('.kudo-object').on({
-      click:      function () { this.start; },
-      mouseenter: function () { this.start; },
-      mouseleave: function () { this.end;   },
-      touchstart: function()  { this.start; },
-      touchend:   function () { this.end;   }
-    });
-
+    this.element.children('.kudo-object').mouseenter(this.start);
+    this.element.children('.kudo-object').mouseleave(this.end);
     if (kudosdata.unkudo)
       this.element.children('.kudo-object').click(this.unkudo);
     else
       this.element.children('.kudo-object').css('cursor','default');
 
-    return true;
+    jQuery(this.element.children('.kudo-object')).on('touchstart', this.start);
+    return jQuery(this.element.children('.kudo-object')).on('touchend', this.end);
   };
 
   Kudoable.prototype.isKudoable = function() {
