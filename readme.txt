@@ -9,8 +9,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=a%2eh
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 3.1
-Tested up to: 3.6
-Stable tag: 1.1
+Tested up to: 3.9
+Stable tag: 1.1.1
 
 Brings Kudos, an unobtrusive alternative to Facebook's like, to your WordPress blog.
 
@@ -55,6 +55,9 @@ By default the Kudos are displayed in the top left of your content. Take a look
 into `Settings -> Kudos` for customizations.
 
 == Changelog ==
+
+= 1.1.1: 2014-01-28 =
+* Tiny PHP 5.2 fix
 
 = 1.1: 2013-04-23 =
 * Added option to disable unkudo'ing

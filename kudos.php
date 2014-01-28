@@ -4,7 +4,7 @@ Plugin Name: Kudos
 Plugin URI: http://yrnxt.com/wordpress/kudos
 Description: Svbtle.com style kudos for your blog.
 Author: Alexander Höreth
-Version: 1.1
+Version: 1.1.1
 Author URI: http://yrnxt.com
 License: GPL2
 
@@ -27,7 +27,7 @@ License: GPL2
 */
 
 if (!defined('KUDO_VER'))
-	define('KUDO_VER', '1.1');
+	define('KUDO_VER', '1.1.1');
 
 // symlink proof
 $pathinfo = pathinfo(dirname(plugin_basename(__FILE__)));

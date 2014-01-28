@@ -66,7 +66,7 @@ function kudos_count( $post_id = null, $text = null, $hover = null ) {
  * @param  boolean 	$counter 	if counter should be printed as well
  * @return string           	Kudo html code
  */
-function get_kudos( $post_id = null, $attr ){
+function get_kudos( $post_id = null, $attr = null ){
 	extract( $attr );
 	//	$class, $style, $counter, $text, $hover
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;

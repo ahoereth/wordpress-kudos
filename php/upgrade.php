@@ -39,5 +39,3 @@ function kudos_upgrade() {
 		update_option( 'kudos', $options );
 
 }
-
-?>

@@ -80,7 +80,7 @@ class kudos_filter {
 	 *
 	 * @since 1.0
 	 *
-	 * @uses $this::content
+	 * @uses $this->content
 	 * @param  string $excerpt excerpt before filtering
 	 * @return string          excerpt + Kudos
 	 */
